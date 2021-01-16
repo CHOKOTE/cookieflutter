@@ -1,3 +1,6 @@
+
+import 'package:cookie/bottom_bar.dart';
+import 'package:cookie/cookie_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -74,11 +77,43 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               controller:_tabController,
               indicatorColor:Colors.transparent,
               isScrollable:true,
-              labelPadding:EdgeInsets.only(right:45.0)
+              labelPadding:EdgeInsets.only(right:45.0),
+              unselectedLabelColor:Color(0xFFCDCDCD),
+              tabs: [
+                Tab(
+                  child: Text('Cookies',
+                  style:TextStyle(fontFamily:'Varela',fontSize:21.0)),
+                ),
+                Tab(
+                  child: Text('Cookies cake',
+                  style:TextStyle(fontFamily:'Varela',fontSize:21.0)),
+                ),
+                Tab(
+                  child: Text('ice cream',
+                  style:TextStyle(fontFamily:'Varela',fontSize:21.0)),
+                ),
+              ],
+            ),
+            Container(
+              height:MediaQuery.of(context).size.height -50.0,
+              width: double.infinity,
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                    CookiePage(),
+                    CookiePage(),
+                    CookiePage(),
+                ],
+              ),
             )
         ],
         
       ),
+      floatingActionButton: FloatingActionButton(child: Icon(Icons.fastfood),
+      backgroundColor: Color(0xFFF17532),
+      onPressed: (){},),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomBar(),
     );
   }
 }
